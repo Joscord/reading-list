@@ -1,6 +1,5 @@
 import { initializeApp } from 'firebase/app';
 import { getFirestore } from 'firebase/firestore'
-// Importamos una función getAuth para obtener un objeto de autenticación
 import { getAuth } from 'firebase/auth';
 
 const firebaseConfig = {
@@ -15,7 +14,6 @@ const firebaseConfig = {
 initializeApp(firebaseConfig);
 
 const db = getFirestore();
-// Obtenemos el objeto de autenticación e inicializamos la autenticación
 const auth = getAuth();
 
 export { db, auth }	

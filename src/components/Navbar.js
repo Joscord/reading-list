@@ -2,18 +2,14 @@ import React from 'react'
 import { Link } from 'react-router-dom'
 import { useLogout } from '../hooks/useLogout'
 import { useAuthContext } from '../hooks/useAuthContext';
-import { useHistory } from 'react-router-dom';
 
 
 export default function Navbar() {
   const { logout } = useLogout();
-  const history = useHistory();
-  // Destructuramos el usuario
   const { user } = useAuthContext();
 
   const handleClick = () => {
     logout();
-    history.push('/login');
   }
   
   return (

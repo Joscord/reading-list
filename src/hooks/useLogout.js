@@ -1,6 +1,5 @@
 import { auth } from '../firebase/config';
 import { signOut } from 'firebase/auth';
-// importamos el hook para usar el contexto
 import { useAuthContext } from "./useAuthContext";
 
 export const useLogout = () => {
@@ -8,7 +7,6 @@ export const useLogout = () => {
         const logout = async () => {
             try {
                 await signOut(auth);
-                //despachamos la accion de logout
                 dispatch({type: 'LOGOUT'});
 
             } catch (err) {

@@ -1,15 +1,11 @@
 import { BrowserRouter, Switch, Route, Redirect } from 'react-router-dom';
-// Importamos el hook para usar el contexto
 import { useAuthContext } from './hooks/useAuthContext';
-// Importamos el componente de redirección
-
 import Navbar from './components/Navbar';
 import Home from './pages/Home';
 import Login from './pages/Login';
 import Signup from './pages/Signup';
 
 function App() {
-	// Obtenemos el usuario y authIsReady del contexto
 	const { user, authIsReady } = useAuthContext();
 
 	return (
