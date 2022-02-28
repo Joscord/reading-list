@@ -1,16 +1,19 @@
 import { useState } from 'react'
-// importamos el objeto db y las funciones de firestore para trabajar. addDoc es la función que nos permite añadir documentos
 import { db } from '../firebase/config'
 import { collection, addDoc } from 'firebase/firestore'
+// Importamos nuestro hook de contexto
+import { useAuthContext } from '../hooks/useAuthContext'
 
 export default function BookForm() {
   const [newBook, setNewBook] = useState('')
-
+// Usamos nuestro custom hooks
+const { user } = useAuthContext();
   const handleSubmit = async (e) => {
     e.preventDefault()
-    // Para addDoc pasamos primero la referencia de la colección a la que queremos añadir el documento, usamos otra forma de pasar la referencia para enseñar las diferentes maneras. El segundo argumento es el bojeto que representa el documento que deseamos añadir
+    // Pasamos una nueva propiedad uid que seŕa igual al uid del usuario conectado
     await addDoc(collection(db, 'books'), {
-      title: newBook 
+      title: newBook,
+      uid: user.uid
     })
     setNewBook('')
   }

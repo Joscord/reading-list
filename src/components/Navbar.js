@@ -14,8 +14,8 @@ export default function Navbar() {
   const handleClick = () => {
     logout();
     history.push('/login');
-
   }
+  
   return (
     <nav>
       <h1>My Reading List</h1>
