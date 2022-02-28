@@ -38,6 +38,7 @@ export default function Signup() {
         </label>
         <button>sign up</button>
       </form>
+      {error && <p>{error}</p>}
     </div>
   )
 }
