@@ -1,5 +1,5 @@
 // Importamos la función para crear el contexto
-import { createContext, useReducer } from 'react';
+import { createContext, useReducer, useEffect } from 'react';
 // Importamos el objeto de autenticación
 import { auth } from '../firebase/config';
 // Importamos la función para que Firebase evalúe inmediatamente si hay un usuario logueado o no (al cargar la app)
@@ -20,23 +20,18 @@ export const authReducer = (state, action) => {
 	}
 };
 
-export const authContextProvider = ({ children }) => {
+export const AuthContextProvider = ({ children }) => {
 	const [state, dispatch] = useReducer(authReducer, {
 		user: null,
 		authIsReady: false,
 	});
-
-	useEffect(() => {
-		// En Firebase 9 en lugar de invocar un método de auth, importamos la función directamente y pasamos auth como parámetro
-		const unsub = onAuthStateChanged((auth, user) => {
-			dispatch({ type: 'AUTH_IS_READY', payload: user });
-			unsub();
-		}, []);
-
-		return () => {
-			second;
-		};
-	}, [third]);
+    useEffect(() => {
+        // En Firebase 9 auth es pasado como parámetro a la función que importamos directamente desde firebase/auth
+        const unsuscribe = onAuthStateChanged(auth, user => {
+            dispatch({type: 'AUTH_IS_READY', payload: user})
+        });
+        unsuscribe();
+    }, [])
 
 	return (
 		<AuthContext.Provider value={{ ...state, dispatch }}>
