@@ -1,14 +1,15 @@
-// Importamos el objeto de autentiación
 import { auth } from '../firebase/config';
-// Importamos la función para desloguear
 import { signOut } from 'firebase/auth';
+// importamos el hook para usar el contexto
+import { useAuthContext } from "./useAuthContext";
 
 export const useLogout = () => {
-		// El único argumento que necesita la función signOut es el objeto auth
+    const { dispatch } = useAuthContext();
         const logout = async () => {
             try {
                 await signOut(auth);
-                console.log('logged out');
+                //despachamos la accion de logout
+                dispatch({type: 'LOGOUT'});
 
             } catch (err) {
                 console.log('An error ocurred while loggin out', err.message);
