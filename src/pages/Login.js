@@ -1,12 +1,16 @@
 import { useState } from 'react'
+// Importamos nuestro custom-hook
+import { useLogin } from '../hooks/useLogin';
 
 export default function Login() {
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
+  // Destructuramos la función para el login
+  const { login } = useLogin();
 
   const handleSubmit = (e) => {
     e.preventDefault()
-    console.log(email, password)
+    login(email, password);
   }
   
   return (
