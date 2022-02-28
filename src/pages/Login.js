@@ -6,7 +6,7 @@ export default function Login() {
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
   // Destructuramos la función para el login
-  const { login } = useLogin();
+  const { login, error } = useLogin();
 
   const handleSubmit = (e) => {
     e.preventDefault()
@@ -37,6 +37,7 @@ export default function Login() {
         </label>
         <button>log in</button>
       </form>
+      {error && <p>{error}</p>}
     </div>
   )
 }
