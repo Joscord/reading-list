@@ -1,5 +1,7 @@
 import { initializeApp } from 'firebase/app';
 import { getFirestore } from 'firebase/firestore'
+// Importamos una función getAuth para obtener un objeto de autenticación
+import { getAuth } from 'firebase/auth';
 
 const firebaseConfig = {
 	apiKey: 'AIzaSyD4qP3rvv0QyV4xPSU37h5W4NMByScgSqs',
@@ -13,5 +15,7 @@ const firebaseConfig = {
 initializeApp(firebaseConfig);
 
 const db = getFirestore();
+// Obtenemos el objeto de autenticación e inicializamos la autenticación
+const auth = getAuth();
 
-export { db }
+export { db, auth }	

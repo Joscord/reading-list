@@ -1,12 +1,17 @@
 import { useState } from 'react'
+// Importamos nuestro custom hook para el registro
+import { useSignup } from '../hooks/useSignup';
 
 export default function Signup() {
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
+  // Destructuramos el error y la función de registro de nuestro custom hook. Nótese que el custom hook no recibe parámetros, es la función signup la que los recibe
+  const { signup, error } = useSignup();
 
   const handleSubmit = (e) => {
     e.preventDefault()
-    console.log(email, password)
+    // registramos al usuario con la función de signup
+    signup(email, password);
   }
   
   return (
